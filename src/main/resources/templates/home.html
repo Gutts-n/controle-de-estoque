@@ -25,7 +25,7 @@
                                     <label for="quantidade" class="form-label">Quantidade</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" th:text="${produto.tipoQuantidade}"></span>
-                                        <input name="quantidade" th:number="${produto.quantidade}" id="quantidade" type="number" disabled
+                                        <input name="quantidade" th:value="${produto.quantidade}" id="quantidade" type="number" disabled
                                                class="form-control" aria-label="Amount (to the nearest dollar)">
                                     </div>
                                 </li>
@@ -33,7 +33,7 @@
                                     <label for="preco" class="form-label">Valor unitário</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">R$</span>
-                                        <input name="preco" id="preco" th:number="${produto.preco}" type="number" disabled
+                                        <input name="preco" id="preco" th:value="${produto.preco}" type="number" disabled
                                                class="form-control" aria-label="Amount (to the nearest dollar)">
                                     </div>
                                 </li>
@@ -42,7 +42,7 @@
                                 <h6><label for="total" class="form-label">Total</label></h6>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text negrito">R$</span>
-                                    <input name="total" id="total" th:number="${produto.total}" type="number" disabled
+                                    <input name="total" id="total" th:value="${produto.total}" type="number" disabled
                                            class="form-control negrito" aria-label="Amount (to the nearest dollar)">
                                 </div>
                             </div>

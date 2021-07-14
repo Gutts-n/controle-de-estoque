@@ -33,7 +33,7 @@ public class ProdutoDTO {
     @TipoQuantidadePattern(regexp = "KG|UN")
     private TipoQuantidade tipoQuantidade;
 
-    public Produto toPedido(){
+    public Produto toProduto(){
         return new Produto(nomeProduto, quantidade, preco, tipoQuantidade);
     }
 

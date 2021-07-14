@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="base :: view-phone">
   <title>Cadastro de produto</title>
 </head>
@@ -13,11 +13,12 @@
       <form id="form" method="POST" action="/produto/salvar">
         <div class="mb-3">
           <label for="nomeProduto" class="form-label">Nome do produto</label>
-          <input autocomplete="off" type="text" class="form-control" id="nomeProduto" name="nomeProduto">
+          <input autocomplete="off" placeholder="Nome do produto." type="text" th:value="${produto.nome}"
+                 class="form-control" id="nomeProduto" name="nomeProduto">
         </div>
         <div class="mb-3">
           <label for="preco" class="form-label">Valor</label>
-          <input autocomplete="off" type="number" class="form-control" id="preco" name="preco">
+          <input autocomplete="off" type="number" placeholder="Valor do produto." th:value="${produto.preco}" class="form-control" id="preco" name="preco">
         </div>
         <div class="mb-3">
           <label for="quantidade" class="form-label">Quantidade</label>
@@ -28,9 +29,10 @@
               <option value="KG">Quilo</option>
               <option value="UN">Unidade</option>
               </select>
-              <input hidden name="tipoQuantidade" id="tipoQunt" type="text">
+              <input hidden name="tipoQuantidade" th:value="${produto.tipoQuantidade}" id="tipoQunt" type="text">
             </div>
-            <input autocomplete="off" type="number" class="form-control" id="quantidade" name="quantidade">
+            <input autocomplete="off" type="number" placeholder="Quantidade do produto."
+                   th:value="${produto.quantidade}" class="form-control" id="quantidade" name="quantidade">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
