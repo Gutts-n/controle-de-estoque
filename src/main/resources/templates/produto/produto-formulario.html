@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head th:insert="base :: view-phone">
+  <title>Cadastro de produto</title>
+</head>
+<body>
+
+  <header>
+    <div th:replace="base :: navbar"></div>
+  </header>
+  <main>
+    <section class="container-fluid">
+      <form id="form" method="POST" action="/produto/salvar">
+        <div class="mb-3">
+          <label for="nomeProduto" class="form-label">Nome do produto</label>
+          <input autocomplete="off" type="text" class="form-control" id="nomeProduto" name="nomeProduto">
+        </div>
+        <div class="mb-3">
+          <label for="preco" class="form-label">Valor</label>
+          <input autocomplete="off" type="number" class="form-control" id="preco" name="preco">
+        </div>
+        <div class="mb-3">
+          <label for="quantidade" class="form-label">Quantidade</label>
+          <div class="input-group">
+            <div>
+              <select id="selectValue" onclick="pegarTipoQuantidade('selectValue')" class="form-select">
+              <option>Selecione</option>
+              <option value="KG">Quilo</option>
+              <option value="UN">Unidade</option>
+              </select>
+              <input hidden name="tipoQuantidade" id="tipoQunt" type="text">
+            </div>
+            <input autocomplete="off" type="number" class="form-control" id="quantidade" name="quantidade">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </section>
+  </main>
+</body>
+<script>
+  function pegarTipoQuantidade(nomeDoCampo){
+    const valorSelecionado = document.querySelector(`#${nomeDoCampo}`);
+    const tipoQunt = document.querySelector('#tipoQunt');
+    console.log(tipoQunt);
+    if (valorSelecionado.value === "KG" || valorSelecionado.value === "UN"){
+      tipoQunt.value = valorSelecionado.value
+    }
+  }
+</script>
+</html>
