@@ -1,6 +1,6 @@
-package com.br.controle.estoque.para.edu.controllers;
+package com.br.controle.estoque.controllers;
 
-import com.br.controle.estoque.para.edu.services.ProdutoService;
+import com.br.controle.estoque.services.ProdutoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;

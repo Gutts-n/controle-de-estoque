@@ -1,4 +1,4 @@
-package com.br.controle.estoque.para.edu;
+package com.br.controle.estoque;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

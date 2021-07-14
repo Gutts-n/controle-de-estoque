@@ -1,8 +1,8 @@
-package com.br.controle.estoque.para.edu.dto;
+package com.br.controle.estoque.dto;
 
-import com.br.controle.estoque.para.edu.annotations.TipoQuantidadePattern;
-import com.br.controle.estoque.para.edu.model.Produto;
-import com.br.controle.estoque.para.edu.model.TipoQuantidade;
+import com.br.controle.estoque.annotations.TipoQuantidadePattern;
+import com.br.controle.estoque.model.Produto;
+import com.br.controle.estoque.model.TipoQuantidade;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

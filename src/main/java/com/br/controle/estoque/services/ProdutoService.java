@@ -1,7 +1,7 @@
-package com.br.controle.estoque.para.edu.services;
+package com.br.controle.estoque.services;
 
-import com.br.controle.estoque.para.edu.model.Produto;
-import com.br.controle.estoque.para.edu.repositories.ProdutoRepository;
+import com.br.controle.estoque.model.Produto;
+import com.br.controle.estoque.repositories.ProdutoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 

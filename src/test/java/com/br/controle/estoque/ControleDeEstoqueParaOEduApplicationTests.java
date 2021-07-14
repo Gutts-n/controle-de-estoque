@@ -1,4 +1,4 @@
-package com.br.controle.estoque.para.edu;
+package com.br.controle.estoque;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.br.controle.estoque.para.edu;
+package com.br.controle.estoque;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

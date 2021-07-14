@@ -1,4 +1,4 @@
-package com.br.controle.estoque.para.edu.model;
+package com.br.controle.estoque.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,6 +1,6 @@
-package com.br.controle.estoque.para.edu.validators;
+package com.br.controle.estoque.validators;
 
-import com.br.controle.estoque.para.edu.annotations.TipoQuantidadePattern;
+import com.br.controle.estoque.annotations.TipoQuantidadePattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
