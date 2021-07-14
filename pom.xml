@@ -12,8 +12,8 @@
     <artifactId>ControleDeEstoqueParaOEdu</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Controle De Estoque Para o Edu</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Controle De Estoque</name>
+    <description>Projeto de controle de estoque para empresas de pequena porte.</description>
     <properties>
         <java.version>16</java.version>
     </properties>
