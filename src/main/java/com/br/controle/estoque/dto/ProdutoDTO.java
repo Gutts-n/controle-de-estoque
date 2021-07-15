@@ -1,6 +1,7 @@
 package com.br.controle.estoque.dto;
 
 import com.br.controle.estoque.annotations.TipoQuantidadePattern;
+import com.br.controle.estoque.model.Colaborador;
 import com.br.controle.estoque.model.Produto;
 import com.br.controle.estoque.model.TipoQuantidade;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,9 @@ public class ProdutoDTO {
     @NotNull
     @TipoQuantidadePattern(regexp = "KG|UN")
     private TipoQuantidade tipoQuantidade;
+
+    @NotNull
+    private Colaborador colaborador;
 
     public Produto toProduto(){
         return new Produto(nomeProduto, quantidade, preco, tipoQuantidade);
