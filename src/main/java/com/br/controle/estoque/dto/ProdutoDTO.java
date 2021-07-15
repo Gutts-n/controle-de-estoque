@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 public class ProdutoDTO {
 
     @NotBlank
-    private String nomeProduto;
+    private String nome;
 
     @NotNull
     @Min(0)
@@ -34,7 +34,7 @@ public class ProdutoDTO {
     private TipoQuantidade tipoQuantidade;
 
     public Produto toProduto(){
-        return new Produto(nomeProduto, quantidade, preco, tipoQuantidade);
+        return new Produto(nome, quantidade, preco, tipoQuantidade);
     }
 
 }

@@ -10,15 +10,16 @@
   </header>
   <main>
     <section class="container-fluid">
-      <form id="form" method="POST" action="/produto/salvar">
+      <form th:object="${produto}" id="form" method="POST" action="#" th:action="@{/produto/salvar}">
         <div class="mb-3">
           <label for="nomeProduto" class="form-label">Nome do produto</label>
-          <input autocomplete="off" placeholder="Nome do produto." type="text" th:value="${produto.nome}"
-                 class="form-control" id="nomeProduto" name="nomeProduto">
+          <input autocomplete="off" th:field="*{nome}" placeholder="Nome do produto."
+                 type="text" class="form-control" id="nomeProduto">
         </div>
         <div class="mb-3">
           <label for="preco" class="form-label">Valor</label>
-          <input autocomplete="off" type="number" placeholder="Valor do produto." th:value="${produto.preco}" class="form-control" id="preco" name="preco">
+          <input autocomplete="off" type="number" placeholder="Valor do produto."
+                 th:field="*{preco}" class="form-control" id="preco">
         </div>
         <div class="mb-3">
           <label for="quantidade" class="form-label">Quantidade</label>
@@ -29,10 +30,10 @@
               <option value="KG">Quilo</option>
               <option value="UN">Unidade</option>
               </select>
-              <input hidden name="tipoQuantidade" th:value="${produto.tipoQuantidade}" id="tipoQunt" type="text">
+              <input hidden th:field="*{tipoQuantidade}" id="tipoQunt" type="text">
             </div>
             <input autocomplete="off" type="number" placeholder="Quantidade do produto."
-                   th:value="${produto.quantidade}" class="form-control" id="quantidade" name="quantidade">
+                   class="form-control" id="quantidade" th:field="*{quantidade}">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>

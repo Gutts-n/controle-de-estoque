@@ -39,12 +39,12 @@ public class ProdutoController {
     public ModelAndView salvarProduto(@Valid ProdutoDTO produtoDTO, BindingResult resultadoDosErros){
 
         if (resultadoDosErros.hasErrors()){
-//            Map<String, Object> produtoAndErros = new HashMap<>();
-//            produtoAndErros.put("produto", new Produto();
-//            produtoAndErros.put("erros", resultadoDosErros);
+            Map<String, Object> produtoAndErros = new HashMap<>();
+            produtoAndErros.put("produto", produtoDTO);
+            produtoAndErros.put("erros", resultadoDosErros);
 
             return new ModelAndView("produto/produto-formulario")
-                    .addObject(resultadoDosErros);
+                    .addAllObjects(produtoAndErros);
         }
 
         Produto produto = produtoDTO.toProduto();
