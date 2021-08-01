@@ -18,7 +18,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface TipoQuantidadePattern {
 
     String regexp();
-    String message() default "must match \"{regexp}\"";
+    String message() default "{validacao.tipoQuantidade.message}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 

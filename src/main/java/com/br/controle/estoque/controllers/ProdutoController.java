@@ -1,30 +1,50 @@
 package com.br.controle.estoque.controllers;
 
 import com.br.controle.estoque.dto.ProdutoDTO;
+import com.br.controle.estoque.exceptionUtils.ExceptionUtils;
+import com.br.controle.estoque.exceptions.ExceptionGlobal;
 import com.br.controle.estoque.model.Produto;
+import com.br.controle.estoque.repositories.ProdutoRepository;
 import com.br.controle.estoque.services.ProdutoService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Controller
+@RestController
 @RequestMapping("produto")
+@AllArgsConstructor
 public class ProdutoController {
 
     private final ProdutoService produtoService;
+    private final ProdutoRepository produtoRepository;
 
-    public ProdutoController(ProdutoService produtoService) {
-        this.produtoService = produtoService;
+    @PostMapping
+    public Produto salvar(@RequestBody @Valid ProdutoDTO produtoDTO){
+
+        try{
+            return this.produtoService.salvar(produtoDTO.toProduto());
+        }
+        catch (ExceptionGlobal exceptionGlobal){
+            throw ExceptionUtils.retornarErroAoUsuario(exceptionGlobal);
+        }
     }
 
-    @PostMapping("salvar")
-    public Produto salvarProduto(@Valid ProdutoDTO produtoDTO){
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletar(@RequestParam Long id){
+        produtoRepository.deleteById(id);
+    }
 
-        Produto produto = produtoDTO.toProduto();
+    @PutMapping("/{id}")
+    public Produto atualizar(@RequestParam Long id, @Valid @RequestBody ProdutoDTO produtoDTO){
 
-        return this.produtoService.salvar(produto);
+        try {
+            return produtoService.atualizar(id, produtoDTO.toProdutoComColaboradorEEstabelecimento());
+        } catch (ExceptionGlobal exceptionGlobal){
+            throw ExceptionUtils.retornarErroAoUsuario(exceptionGlobal);
+        }
     }
 
 

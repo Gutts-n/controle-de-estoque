@@ -1,10 +1,13 @@
 package com.br.controle.estoque.services;
 
+import com.br.controle.estoque.exceptions.ExceptionGlobal;
 import com.br.controle.estoque.model.Produto;
 import com.br.controle.estoque.repositories.ProdutoRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -22,5 +25,17 @@ public class ProdutoService {
 
     public Produto salvar(Produto produto){
         return this.produtoRepository.save(produto);
+    }
+
+    public Produto atualizar(Long id, Produto produto) {
+
+        Optional<Produto> produtoOptional = produtoRepository.findById(id);
+
+        if (produtoOptional.isPresent()){
+            Produto produtoCadastrado = produtoOptional.get();
+            BeanUtils.copyProperties(produto, produtoCadastrado, "id");
+            return produtoRepository.save(produto);
+        }
+        throw new ExceptionGlobal("Não foi possível atualizar o produto pois o produto não está cadastrado!");
     }
 }
