@@ -28,12 +28,12 @@ public class Colaborador {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Colaborador that = (Colaborador) o;
-        return Objects.equals(id, that.id) && Objects.equals(estabelecimento, that.estabelecimento) && Objects.equals(nome, that.nome) && Objects.equals(login, that.login) && Objects.equals(senha, that.senha) && Objects.equals(cargo, that.cargo);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, estabelecimento, nome, login, senha, cargo);
+        return Objects.hash(id);
     }
 
     public String getLogin() {

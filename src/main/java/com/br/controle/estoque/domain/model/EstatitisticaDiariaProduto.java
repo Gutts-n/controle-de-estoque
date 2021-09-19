@@ -6,6 +6,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 
@@ -14,7 +15,7 @@ import java.util.Objects;
 public class EstatitisticaDiariaProduto {
 
     @Id
-    private LocalDate dataAlteracao;
+    private LocalDateTime dataAlteracao;
 
     @OneToOne
     private Colaborador colaboradorId;
@@ -27,27 +28,14 @@ public class EstatitisticaDiariaProduto {
 
     private BigDecimal quantidadeAlterada;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EstatitisticaDiariaProduto that = (EstatitisticaDiariaProduto) o;
-        return Objects.equals(dataAlteracao, that.dataAlteracao) && Objects.equals(colaboradorId, that.colaboradorId) && Objects.equals(produtoId, that.produtoId) && Objects.equals(estabId, that.estabId) && Objects.equals(quantidadeAlterada, that.quantidadeAlterada);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(dataAlteracao, colaboradorId, produtoId, estabId, quantidadeAlterada);
-    }
-
     public EstatitisticaDiariaProduto() {
     }
 
-    public LocalDate getDataAlteracao() {
+    public LocalDateTime getDataAlteracao() {
         return dataAlteracao;
     }
 
-    public void setDataAlteracao(LocalDate dataAlteracao) {
+    public void setDataAlteracao(LocalDateTime dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
     }
 

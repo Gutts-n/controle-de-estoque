@@ -26,12 +26,12 @@ public class Estabelecimento {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Estabelecimento that = (Estabelecimento) o;
-        return Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(colaboradores, that.colaboradores);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, colaboradores);
+        return Objects.hash(id);
     }
 
     public Estabelecimento() {

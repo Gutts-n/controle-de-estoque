@@ -27,12 +27,12 @@ public class Cargo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cargo cargo = (Cargo) o;
-        return Objects.equals(id, cargo.id) && Objects.equals(nome, cargo.nome);
+        return Objects.equals(id, cargo.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome);
+        return Objects.hash(id);
     }
 
     public Long getId() {

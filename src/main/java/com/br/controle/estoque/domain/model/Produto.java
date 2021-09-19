@@ -39,12 +39,12 @@ public class Produto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id) && Objects.equals(estabelecimentoId, produto.estabelecimentoId) && Objects.equals(colaboradorId, produto.colaboradorId) && Objects.equals(nome, produto.nome) && Objects.equals(quantidade, produto.quantidade) && tipoQuantidade == produto.tipoQuantidade;
+        return Objects.equals(id, produto.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, estabelecimentoId, colaboradorId, nome, quantidade, tipoQuantidade);
+        return Objects.hash(id);
     }
 
     public Long getId() {
