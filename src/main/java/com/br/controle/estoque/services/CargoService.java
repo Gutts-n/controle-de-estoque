@@ -1,24 +1,26 @@
 package com.br.controle.estoque.services;
 
-import com.br.controle.estoque.exceptions.ExceptionGlobal;
-import com.br.controle.estoque.model.Cargo;
-import com.br.controle.estoque.repositories.CargoRepository;
-import lombok.AllArgsConstructor;
+import com.br.controle.estoque.domain.model.Cargo;
+import com.br.controle.estoque.domain.repositories.CargoRepository;
+import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class CargoService {
 
     private final CargoRepository cargoRepository;
 
+    public CargoService(CargoRepository cargoRepository) {
+        this.cargoRepository = cargoRepository;
+    }
+
     public Cargo salvar(Cargo cargo){
         Optional<Cargo> cargoOptional = cargoRepository.findByNome(cargo.getNome());
         if (cargoOptional.isPresent()){
-            throw new ExceptionGlobal("Cargo já foi cadastrado!");
+            throw new ControleDeEstoqueException("Cargo já foi cadastrado!");
         }
         return cargoRepository.save(cargo);
     }

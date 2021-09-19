@@ -1,4 +1,4 @@
-package com.br.controle.estoque.model;
+package com.br.controle.estoque.domain.model;
 
 import javax.persistence.*;
 import java.util.Objects;

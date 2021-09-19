@@ -1,8 +1,8 @@
 package com.br.controle.estoque.services;
 
-import com.br.controle.estoque.exceptions.ExceptionGlobal;
-import com.br.controle.estoque.model.Produto;
-import com.br.controle.estoque.repositories.ProdutoRepository;
+import com.br.controle.estoque.domain.model.Produto;
+import com.br.controle.estoque.domain.repositories.ProdutoRepository;
+import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +36,6 @@ public class ProdutoService {
             BeanUtils.copyProperties(produto, produtoCadastrado, "id");
             return produtoRepository.save(produto);
         }
-        throw new ExceptionGlobal("Não foi possível atualizar o produto pois o produto não está cadastrado!");
+        throw new ControleDeEstoqueException("Não foi possível atualizar o produto pois o produto não está cadastrado!");
     }
 }

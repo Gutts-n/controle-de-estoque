@@ -1,7 +1,7 @@
-package com.br.controle.estoque.dto;
+package com.br.controle.estoque.domain.dto;
 
-import com.br.controle.estoque.model.Cargo;
-import com.br.controle.estoque.model.Colaborador;
+import com.br.controle.estoque.domain.model.Cargo;
+import com.br.controle.estoque.domain.model.Colaborador;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

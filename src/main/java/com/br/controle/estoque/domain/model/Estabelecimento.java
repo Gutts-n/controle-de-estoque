@@ -1,4 +1,4 @@
-package com.br.controle.estoque.model;
+package com.br.controle.estoque.domain.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,7 +18,7 @@ public class Estabelecimento {
     @Size(min = 5, max = 150)
     private String nome;
 
-    @OneToMany
+    @OneToMany(mappedBy = "estabelecimento")
     private List<Colaborador> colaboradores;
 
     @Override

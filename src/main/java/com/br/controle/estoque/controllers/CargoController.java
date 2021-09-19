@@ -1,10 +1,7 @@
 package com.br.controle.estoque.controllers;
 
-import com.br.controle.estoque.exceptionUtils.ExceptionUtils;
-import com.br.controle.estoque.exceptions.ExceptionGlobal;
-import com.br.controle.estoque.model.Cargo;
+import com.br.controle.estoque.domain.model.Cargo;
 import com.br.controle.estoque.services.CargoService;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("cargo")
-@AllArgsConstructor
 public class CargoController {
 
     private final CargoService cargoService;
+
+    public CargoController(CargoService cargoService) {
+        this.cargoService = cargoService;
+    }
 
     @GetMapping
     public List<Cargo> listarCargos(){
@@ -25,16 +25,12 @@ public class CargoController {
 
     @PostMapping
     public Cargo salvarCargo(@Valid @RequestBody Cargo cargo){
-        try {
-            return cargoService.salvar(cargo);
-        } catch (ExceptionGlobal exception){
-            throw ExceptionUtils.retornarErroAoUsuario(exception);
-        }
+        return cargoService.salvar(cargo);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarCargo(@PathVariable Long id){
-        this.cargoService.deletar(id);
+        cargoService.deletar(id);
     }
 }

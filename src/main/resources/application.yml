@@ -1,0 +1,15 @@
+server:
+  error:
+    include-stacktrace: never
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: Tonyhawkcrackeado1
+    url: jdbc:mysql://localhost:3306/controle_de_estoque?createDatabaseIfNotExist=true
+    username: root
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true

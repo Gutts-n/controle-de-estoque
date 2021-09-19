@@ -1,34 +1,19 @@
-package com.br.controle.estoque.dto;
+package com.br.controle.estoque.domain.dto;
 
 import com.br.controle.estoque.annotations.TipoQuantidadePattern;
-import com.br.controle.estoque.exceptions.ExceptionGlobal;
-import com.br.controle.estoque.model.Colaborador;
-import com.br.controle.estoque.model.Estabelecimento;
-import com.br.controle.estoque.model.Produto;
-import com.br.controle.estoque.model.TipoQuantidade;
-import com.br.controle.estoque.repositories.ColaboradorRepository;
-import com.br.controle.estoque.repositories.EstabelecimentoRepository;
-import lombok.AllArgsConstructor;
+import com.br.controle.estoque.domain.model.Produto;
+import com.br.controle.estoque.domain.model.TipoQuantidade;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
-@AllArgsConstructor
 public class ProdutoDTO {
-
-    private final ColaboradorRepository colaboradorRepository;
-    private final EstabelecimentoRepository estabelecimentoRepository;
 
     @NotNull
     private Long estabId;
 
     @NotNull
     private Long colaboradorId;
-
-    public ProdutoDTO(ColaboradorRepository colaboradorRepository, EstabelecimentoRepository estabelecimentoRepository) {
-        this.colaboradorRepository = colaboradorRepository;
-        this.estabelecimentoRepository = estabelecimentoRepository;
-    }
 
     @NotBlank
     @Size(min = 5, max = 300)
@@ -50,16 +35,6 @@ public class ProdutoDTO {
 
     public Produto toProduto(){
         return new Produto(nome, quantidade, tipoQuantidade);
-    }
-
-    public Produto toProdutoComColaboradorEEstabelecimento(){
-
-        Colaborador colaborador = colaboradorRepository.getById(colaboradorId);
-        Estabelecimento estabelecimento = estabelecimentoRepository.getById(estabId);
-        if (colaborador == null || estabelecimento == null){
-            throw new ExceptionGlobal("Estabelecimento e colaborador são obrigatórios");
-        }
-        return new Produto(colaborador, estabelecimento, nome, quantidade, tipoQuantidade);
     }
 
     public Long getEstabId() {

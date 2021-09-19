@@ -1,6 +1,6 @@
-package com.br.controle.estoque.repositories;
+package com.br.controle.estoque.domain.repositories;
 
-import com.br.controle.estoque.model.Produto;
+import com.br.controle.estoque.domain.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

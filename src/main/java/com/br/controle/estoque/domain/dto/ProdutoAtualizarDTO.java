@@ -1,8 +1,8 @@
-package com.br.controle.estoque.dto;
+package com.br.controle.estoque.domain.dto;
 
 import com.br.controle.estoque.annotations.TipoQuantidadePattern;
-import com.br.controle.estoque.model.Produto;
-import com.br.controle.estoque.model.TipoQuantidade;
+import com.br.controle.estoque.domain.model.Produto;
+import com.br.controle.estoque.domain.model.TipoQuantidade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;

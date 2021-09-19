@@ -1,6 +1,5 @@
 package com.br.controle.estoque.exceptionHandler;
 
-import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
@@ -18,10 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-@AllArgsConstructor
 public class HandlerDeExcecoes extends ResponseEntityExceptionHandler {
 
     private final MessageSource messageSource;
+
+    public HandlerDeExcecoes(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
