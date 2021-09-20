@@ -1,6 +1,7 @@
 package com.br.controle.estoque.controllers;
 
 import com.br.controle.estoque.domain.model.Produto;
+import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
 import com.br.controle.estoque.services.ProdutoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
