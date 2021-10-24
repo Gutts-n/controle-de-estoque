@@ -19,12 +19,12 @@ public class ColaboradorController {
 
     @PostMapping
     public Colaborador salvarColaborador(@Valid @RequestBody ColaboradorDTO colaboradorDTO){
-        return this.colaboradorService.salvar(colaboradorDTO.toColaborador());
+        return colaboradorService.salvar(colaboradorDTO.toColaborador());
     }
 
     @PutMapping("/{id}")
     public Colaborador atualizarColaborador(@PathVariable Long id, @Valid @RequestBody ColaboradorDTO colaboradorDTO){
-        return this.colaboradorService.atualizar(id, colaboradorDTO.toColaborador());
+        return colaboradorService.atualizar(id, colaboradorDTO.toColaborador());
     }
 
 }

@@ -23,7 +23,7 @@ public class ProdutoController {
 
     @PostMapping
     public Produto salvar(@RequestBody @Valid ProdutoDTO produtoDTO){
-        return this.produtoService.salvar(produtoDTO.toProduto());
+        return produtoService.salvar(produtoDTO.toProduto());
     }
 
     @DeleteMapping("/{id}")

@@ -19,12 +19,12 @@ public class ProdutoService {
     }
 
     public List<Produto> listarProdutos(){
-        return this.produtoRepository.findAll();
+        return produtoRepository.findAll();
     }
 
 
     public Produto salvar(Produto produto){
-        return this.produtoRepository.save(produto);
+        return produtoRepository.save(produto);
     }
 
     public Produto atualizar(Long id, Produto produto) {

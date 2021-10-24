@@ -20,6 +20,6 @@ public class HomeController {
 
     @GetMapping
     public List<Produto> listarProdutos(){
-        return this.produtoService.listarProdutos();
+        return produtoService.listarProdutos();
     }
 }
