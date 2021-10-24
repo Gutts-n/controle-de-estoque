@@ -1,6 +1,8 @@
 server:
   error:
     include-stacktrace: never
+  servlet:
+    context-path: /controle-estoque-api
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
