@@ -1,5 +1,6 @@
-package com.br.controle.estoque.exceptionHandler;
+package com.br.controle.estoque.core.exceptionHandler;
 
+import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
@@ -9,6 +10,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -57,6 +59,11 @@ public class HandlerDeExcecoes extends ResponseEntityExceptionHandler {
     ) {
         List<Erro> erros = criarListaDeErros(ex.getBindingResult());
         return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ControleDeEstoqueException.class})
+    private ResponseEntity<Object> tratarExcecao(ControleDeEstoqueException exception){
+        return new ResponseEntity<>(new Erro(exception.getMessage(), exception.getMensagemDesenvolvedor()), HttpStatus.BAD_REQUEST);
     }
 
     private List<Erro> criarListaDeErros(BindingResult bindingResult) {
