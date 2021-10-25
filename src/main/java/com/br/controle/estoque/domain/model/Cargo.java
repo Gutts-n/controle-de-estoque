@@ -15,11 +15,11 @@ public class Cargo {
     @NotBlank
     private String nome;
 
-    public Cargo(String nome) {
-        this.nome = nome;
+    public Cargo() {
     }
 
-    public Cargo() {
+    public Cargo(Long id) {
+        this.id = id;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.br.controle.estoque.domain.model;
 
+import com.br.controle.estoque.domain.enums.TipoQuantidade;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -12,11 +14,11 @@ public class Produto {
     private Long id;
 
     @ManyToOne
-    private Estabelecimento estabelecimentoId;
+    private Estabelecimento estabelecimento;
 
     @ManyToOne
-    @JoinColumn(name = "colaborador_que_cadastrou_ou_editou")
-    private Colaborador colaboradorId;
+    @JoinColumn(name = "colaborador_que_cadastrou")
+    private Colaborador colaboradorQueCadastrou;
 
     private String nome;
 
@@ -30,21 +32,16 @@ public class Produto {
 //    @DecimalMin(value = "0")
 //    private BigDecimal preco;
 
-
     public Produto() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public Produto(String nome, BigDecimal quantidade, TipoQuantidade tipoQuantidade, Colaborador colaboradorQueCadastrou) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.tipoQuantidade = tipoQuantidade;
+        this.colaboradorQueCadastrou = colaboradorQueCadastrou;
+//        this.preco = preco;
+//        this.total = this.preco.multiply(new BigDecimal(quantidade));
     }
 
     public Long getId() {
@@ -55,20 +52,20 @@ public class Produto {
         this.id = id;
     }
 
-    public Estabelecimento getEstabelecimentoId() {
-        return estabelecimentoId;
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
     }
 
-    public void setEstabelecimentoId(Estabelecimento estabelecimentoId) {
-        this.estabelecimentoId = estabelecimentoId;
+    public void setEstabelecimento(Estabelecimento estabelecimentoId) {
+        this.estabelecimento = estabelecimentoId;
     }
 
-    public Colaborador getColaboradorId() {
-        return colaboradorId;
+    public Colaborador getColaboradorQueCadastrou() {
+        return colaboradorQueCadastrou;
     }
 
-    public void setColaboradorId(Colaborador colaboradorId) {
-        this.colaboradorId = colaboradorId;
+    public void setColaboradorQueCadastrou(Colaborador colaboradorId) {
+        this.colaboradorQueCadastrou = colaboradorId;
     }
 
     public String getNome() {
@@ -95,26 +92,17 @@ public class Produto {
         this.tipoQuantidade = tipoQuantidade;
     }
 
-    public Produto(String nome, BigDecimal quantidade, TipoQuantidade tipoQuantidade) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.tipoQuantidade = tipoQuantidade;
-//        this.preco = preco;
-//        this.total = this.preco.multiply(new BigDecimal(quantidade));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Objects.equals(id, produto.id);
     }
 
-    public Produto(
-            Colaborador colaboradorId,
-            Estabelecimento estabelecimentoId,
-            String nome,
-            BigDecimal quantidade,
-            TipoQuantidade tipoQuantidade
-    ){
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.tipoQuantidade = tipoQuantidade;
-        this.colaboradorId = colaboradorId;
-        this.estabelecimentoId = estabelecimentoId;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
 }

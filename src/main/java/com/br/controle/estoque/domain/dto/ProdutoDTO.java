@@ -1,8 +1,9 @@
 package com.br.controle.estoque.domain.dto;
 
 import com.br.controle.estoque.annotations.TipoQuantidadePattern;
+import com.br.controle.estoque.domain.model.Colaborador;
 import com.br.controle.estoque.domain.model.Produto;
-import com.br.controle.estoque.domain.model.TipoQuantidade;
+import com.br.controle.estoque.domain.enums.TipoQuantidade;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -34,7 +35,7 @@ public class ProdutoDTO {
     private TipoQuantidade tipoQuantidade;
 
     public Produto toProduto(){
-        return new Produto(nome, quantidade, tipoQuantidade);
+        return new Produto(nome, quantidade, tipoQuantidade, new Colaborador(colaboradorId));
     }
 
     public Long getEstabId() {

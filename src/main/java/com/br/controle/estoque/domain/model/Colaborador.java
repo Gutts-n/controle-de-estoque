@@ -16,12 +16,20 @@ public class Colaborador {
 
     private String nome;
 
-    private String login;
-
-    private String senha;
-
     @OneToOne
     private Cargo cargo;
+
+    public Colaborador() {
+    }
+
+    public Colaborador(String nome, Cargo cargo) {
+        this.nome = nome;
+        this.cargo = cargo;
+    }
+
+    public Colaborador(Long id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,22 +42,6 @@ public class Colaborador {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public Long getId() {
@@ -84,11 +76,4 @@ public class Colaborador {
         this.cargo = cargo;
     }
 
-    public Colaborador() {
-    }
-
-    public Colaborador(String nome, Cargo cargo) {
-        this.nome = nome;
-        this.cargo = cargo;
-    }
 }

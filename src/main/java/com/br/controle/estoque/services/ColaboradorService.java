@@ -1,6 +1,5 @@
 package com.br.controle.estoque.services;
 
-import com.br.controle.estoque.domain.model.Cargo;
 import com.br.controle.estoque.domain.model.Colaborador;
 import com.br.controle.estoque.domain.repositories.ColaboradorRepository;
 import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
@@ -13,23 +12,12 @@ import java.util.Optional;
 public class ColaboradorService {
 
     private final ColaboradorRepository colaboradorRepository;
-    private final CargoService cargoService;
 
-    public ColaboradorService(ColaboradorRepository colaboradorRepository, CargoService cargoService) {
+    public ColaboradorService(ColaboradorRepository colaboradorRepository) {
         this.colaboradorRepository = colaboradorRepository;
-        this.cargoService = cargoService;
     }
 
     public Colaborador salvar(Colaborador colaborador){
-
-        Optional<Cargo> optionalCargo = cargoService.buscarPorNome(colaborador.getCargo().getNome());
-
-        if (optionalCargo.isEmpty()) {
-            Cargo cargo = cargoService.salvar(colaborador.getCargo());
-            colaborador.setCargo(cargo);
-        } else {
-            colaborador.setCargo(optionalCargo.get());
-        }
 
         Optional<Colaborador> colaboradorOptional = buscarColaborador(colaborador);
 
@@ -38,16 +26,13 @@ public class ColaboradorService {
         }
 
         return colaboradorRepository.save(colaborador);
-
     }
 
     private Optional<Colaborador> buscarColaborador(Colaborador colaborador){
-        return colaboradorRepository.
-                findByNomeAndCargo(colaborador.getNome(), colaborador.getCargo());
+        return colaboradorRepository.findByNomeAndCargo(colaborador.getNome(), colaborador.getCargo());
     }
 
     public Colaborador atualizar(Long id, Colaborador colaborador) {
-
 
         Optional<Colaborador> colaboradorOptional = colaboradorRepository.findById(id);
 
@@ -57,6 +42,5 @@ public class ColaboradorService {
             return colaboradorRepository.save(colaborador);
         }
         throw new ControleDeEstoqueException("Não foi possível atualizar pois o colaborador em questão não tem cadastrado!");
-
     }
 }
