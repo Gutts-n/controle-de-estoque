@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 public class TipoQuantidadePatternValidator implements ConstraintValidator<TipoQuantidadePattern, Enum<?>> {
+
     private Pattern pattern;
 
     @Override

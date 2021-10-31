@@ -37,5 +37,4 @@ public class ProdutoController {
         return produtoService.atualizar(id, produtoDTO.toProduto());
     }
 
-
 }
