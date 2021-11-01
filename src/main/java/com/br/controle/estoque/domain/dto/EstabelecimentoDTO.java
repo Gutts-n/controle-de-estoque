@@ -1,16 +1,17 @@
 package com.br.controle.estoque.domain.dto;
 
-import com.br.controle.estoque.domain.model.Estabelecimento;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class EstabelecimentoDTO {
 
     private Long id;
 
     @NotBlank
-    @Min(3)
+    @Size(min = 5, max = 250)
     private String nome;
 
     public Long getId() {

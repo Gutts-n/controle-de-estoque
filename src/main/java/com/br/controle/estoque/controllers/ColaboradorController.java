@@ -6,6 +6,7 @@ import com.br.controle.estoque.services.ColaboradorService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("colaborador")
@@ -25,6 +26,11 @@ public class ColaboradorController {
     @PutMapping("/{id}")
     public Colaborador atualizar(@PathVariable Long id, @Valid @RequestBody ColaboradorDTO colaboradorDTO){
         return colaboradorService.atualizar(id, colaboradorDTO.toColaborador());
+    }
+
+    @GetMapping
+    public List<Colaborador> buscarTodos() { /* TODO AO BUSCAR PELO ESTAB DO USUÁRIO LOGADO PELA JWT */
+        return colaboradorService.buscarTodos();
     }
 
 }

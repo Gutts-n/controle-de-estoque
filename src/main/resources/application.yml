@@ -15,3 +15,23 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+logging:
+  org:
+    hibernate:
+      SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+            StatementCreatorUtils: TRACE

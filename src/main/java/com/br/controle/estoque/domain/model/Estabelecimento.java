@@ -3,6 +3,7 @@ package com.br.controle.estoque.domain.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,25 +15,10 @@ public class Estabelecimento {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotNull
-    @Size(min = 5, max = 150)
     private String nome;
 
     @OneToMany(mappedBy = "estabelecimento")
-    private List<Colaborador> colaboradores;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Estabelecimento that = (Estabelecimento) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+    private List<Colaborador> colaboradores = new ArrayList<>();
 
     public Estabelecimento() {
     }
@@ -64,4 +50,19 @@ public class Estabelecimento {
     public void setColaboradores(List<Colaborador> colaboradores) {
         this.colaboradores = colaboradores;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Estabelecimento that = (Estabelecimento) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 }

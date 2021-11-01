@@ -80,7 +80,7 @@ public class HandlerDeExcecoes extends ResponseEntityExceptionHandler {
         return erros;
     }
 
-    private class Erro {
+    private static class Erro {
         private String mensagemUsuario;
         private String mensagemDesenvolvedor;
 

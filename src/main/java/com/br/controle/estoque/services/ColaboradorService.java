@@ -10,6 +10,7 @@ import com.br.controle.estoque.error.exceptions.ControleDeEstoqueException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -64,6 +65,10 @@ public class ColaboradorService {
 
     private Optional<Estabelecimento> buscarEstab(Estabelecimento estabelecimento) {
         return estabelecimentoRepository.findById(estabelecimento.getId());
+    }
+
+    public List<Colaborador> buscarTodos() {
+        return colaboradorRepository.findAll();
     }
 
     private Optional<Colaborador> buscarColaborador(Colaborador colaborador){
