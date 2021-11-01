@@ -19,18 +19,18 @@ public class CargoController {
     }
 
     @GetMapping
-    public List<Cargo> listarCargos(){
+    public List<Cargo> listar(){
         return cargoService.buscarTodos();
     }
 
     @PostMapping
-    public Cargo salvarCargo(@Valid @RequestBody Cargo cargo){
+    public Cargo salvar(@Valid @RequestBody Cargo cargo){
         return cargoService.salvar(cargo);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarCargo(@PathVariable Long id){
+    public void deletar(@PathVariable Long id){
         cargoService.deletar(id);
     }
 }

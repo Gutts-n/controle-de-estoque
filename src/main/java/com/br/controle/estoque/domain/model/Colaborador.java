@@ -22,9 +22,10 @@ public class Colaborador {
     public Colaborador() {
     }
 
-    public Colaborador(String nome, Cargo cargo) {
+    public Colaborador(String nome, Cargo cargo, Estabelecimento estabelecimento) {
         this.nome = nome;
         this.cargo = cargo;
+        this.estabelecimento = estabelecimento;
     }
 
     public Colaborador(Long id) {

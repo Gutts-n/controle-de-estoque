@@ -37,6 +37,10 @@ public class Estabelecimento {
     public Estabelecimento() {
     }
 
+    public Estabelecimento(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

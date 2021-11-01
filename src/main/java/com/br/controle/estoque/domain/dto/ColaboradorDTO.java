@@ -2,10 +2,12 @@ package com.br.controle.estoque.domain.dto;
 
 import com.br.controle.estoque.domain.model.Cargo;
 import com.br.controle.estoque.domain.model.Colaborador;
+import com.br.controle.estoque.domain.model.Estabelecimento;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 public class ColaboradorDTO {
 
     @NotBlank
@@ -25,7 +27,7 @@ public class ColaboradorDTO {
     }
 
     public Colaborador toColaborador(){
-        return new Colaborador(nome, new Cargo(idCargo));
+        return new Colaborador(nome, new Cargo(idCargo), new Estabelecimento(idEstab));
     }
 
     public Long getIdEstab() {
